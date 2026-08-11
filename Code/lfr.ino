@@ -1,5 +1,5 @@
 int in1=7;
-int in2=6;
+int in2=6
 int in3=5;
 int in4=4;
 int ena=9;
@@ -16,7 +16,6 @@ pinMode(in3,OUTPUT);
 pinMode(in4,OUTPUT);
 pinMode(ir1,INPUT);
 pinMode(ir2,INPUT);
-Serial.begin(9600);
 }
 void forward()
 {
@@ -24,8 +23,8 @@ digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
 digitalWrite(in3,LOW);
 digitalWrite(in4,HIGH);
-analogWrite(ena,180);
-analogWrite(enb,180);
+digitalWrite(ena,180);
+digitalWrite(enb,180);
 }
 void right()
 {
@@ -33,8 +32,8 @@ digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
 digitalWrite(in3,LOW);
 digitalWrite(in4,HIGH);
-analogWrite(ena,120);
-analogWrite(enb,180);
+digitalWrite(ena,60);
+digitalWrite(enb,180);
 }
 void left()
 {
@@ -42,40 +41,34 @@ digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
 digitalWrite(in3,LOW);
 digitalWrite(in4,HIGH);
-analogWrite(ena,180);
-analogWrite(enb,120);
+digitalWrite(ena,180);
+digitalWrite(enb,60);
 }
 void stop()
 {
-digitalWrite(in1,LOW);
+digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
 digitalWrite(in3,LOW);
-digitalWrite(in4,LOW);
-analogWrite(ena,0);
-analogWrite(enb,0);
+digitalWrite(in4,HIGH);
+digitalWrite(ena,0);
+digitalWrite(enb,0);
 }
 
 void loop()
 {
-int i1=digitalRead(ir1);
-int i2=digitalRead(ir2);
-if(i1==1&&i2==1)
+if(ir1==1&&ir2==1)
 {
 forward();
-Serial.println("forward");
 }
-else if(i1==LOW&&i2==HIGH)
-{
-right();
-Serial.println("right");
-}
-else if(i1==HIGH && i2==LOW)
+else if(ir1==1&&ir2==0)
 {
 left();
-Serial.println("left");
 }
-else if(i1==0&&i2==0){
+else if(ir2=0 && ir1=1)
+{
+right();
+}
+else
 stop();
-Serial.println("stop");
-}
+
 }
