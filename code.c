@@ -67,12 +67,12 @@ Serial.println("forward");
 else if(i1==LOW&&i2==HIGH)
 {
 right();
-Serial.println("left");
+Serial.println("right");
 }
 else if(i1==HIGH && i2==LOW)
 {
 left();
-Serial.println("right");
+Serial.println("left");
 }
 else if(i1==0&&i2==0){
 stop();
